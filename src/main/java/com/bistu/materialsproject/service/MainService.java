@@ -10,6 +10,7 @@ public interface MainService {
 
     Composition findByMp_id(Integer mp_id);
     List<Composition> getComposition(int pageNum, int pageSize);
+    long getTableCount(String tableName);
 
 
 }

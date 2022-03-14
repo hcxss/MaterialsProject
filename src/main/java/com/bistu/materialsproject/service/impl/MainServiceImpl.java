@@ -51,4 +51,11 @@ public class MainServiceImpl implements MainService {
         return CompositionList;
 
     }
+    @Override
+    public long getTableCount(String tableName) {
+        Query query = new Query();
+        long count=mongoTemplate.getCollection(tableName).countDocuments();
+        return count;
+    }
 }
+

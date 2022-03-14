@@ -35,4 +35,12 @@ public class MainController {
         Result res= new Result(mainServiceImpl.getComposition(pageNum, pageSize));
         return res;
     }
+    @ResponseBody
+    @RequestMapping(value = "/get_tab_count", method = RequestMethod.POST)
+    public Result getTabCount(HttpServletResponse response, HttpServletRequest request) throws ParseException {
+        String  tableName= ServletRequestUtils.getStringParameter(request,"tableName","");
+
+        Result res= new Result(mainServiceImpl.getTableCount(tableName));
+        return res;
+    }
 }
