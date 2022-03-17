@@ -1,10 +1,8 @@
 package com.bistu.materialsproject.controller;
 
 import com.bistu.materialsproject.bean.common.Result;
-import com.bistu.materialsproject.service.MainService;
-import com.bistu.materialsproject.service.impl.MainServiceImpl;
+import com.bistu.materialsproject.service.impl.StructureServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,22 +15,22 @@ import java.text.ParseException;
 
 @Controller
 @RequestMapping("/main")
-public class MainController {
+public class StructureController {
     @Autowired
-    MainServiceImpl mainServiceImpl;
+    StructureServiceImpl structureServiceImpl;
     @ResponseBody
-    @RequestMapping(value = "/get_compositionBympId", method = RequestMethod.POST)
-    public Result getCompositionBympId(HttpServletResponse response, HttpServletRequest request) throws ParseException {
+    @RequestMapping(value = "/get_structureBympId", method = RequestMethod.POST)
+    public Result getStructureBympId(HttpServletResponse response, HttpServletRequest request) throws ParseException {
         int mp_id= ServletRequestUtils.getIntParameter(request,"mp_id",0);
-        Result res= new Result(mainServiceImpl.findByMp_id(mp_id));
+        Result res= new Result(structureServiceImpl.findByMp_id(mp_id));
         return res;
     }
     @ResponseBody
-    @RequestMapping(value = "/get_composition", method = RequestMethod.POST)
-    public Result getComposition(HttpServletResponse response, HttpServletRequest request) throws ParseException {
+    @RequestMapping(value = "/get_structure", method = RequestMethod.POST)
+    public Result getStructure(HttpServletResponse response, HttpServletRequest request) throws ParseException {
         int pageNum= ServletRequestUtils.getIntParameter(request,"pageNum",0);
         int pageSize= ServletRequestUtils.getIntParameter(request,"pageSize",0);
-        Result res= new Result(mainServiceImpl.getComposition(pageNum, pageSize));
+        Result res= new Result(structureServiceImpl.getStructure(pageNum, pageSize));
         return res;
     }
     @ResponseBody
@@ -40,7 +38,7 @@ public class MainController {
     public Result getTabCount(HttpServletResponse response, HttpServletRequest request) throws ParseException {
         String  tableName= ServletRequestUtils.getStringParameter(request,"tableName","");
 
-        Result res= new Result(mainServiceImpl.getTableCount(tableName));
+        Result res= new Result(structureServiceImpl.getTableCount(tableName));
         return res;
     }
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public interface MainService {
+public interface CompositionService {
 
     Composition findByMp_id(Integer mp_id);
     List<Composition> getComposition(int pageNum, int pageSize);
