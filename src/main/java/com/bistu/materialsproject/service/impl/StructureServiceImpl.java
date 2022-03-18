@@ -22,7 +22,10 @@ public class StructureServiceImpl implements StructureService {
         return mongoTemplate.findOne(query, Structure.class);
 
     }
-
+    /*
+    * @pageNum 页码
+    * @pageSize 页长
+    * */
     @Override
     public List<Structure> getStructure(int pageNum, int pageSize) {
         Query query = new Query();

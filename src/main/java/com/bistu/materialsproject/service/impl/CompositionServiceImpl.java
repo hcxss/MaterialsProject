@@ -35,10 +35,10 @@ public class CompositionServiceImpl implements CompositionService {
 
             List<Composition> Compositions = mongoTemplate.find(query, Composition.class);
             // 取出最后一条
-            Composition Composition = Compositions.get(Compositions.size() - 1);
+            Composition com = Compositions.get(Compositions.size() - 1);
 
             // 取到上一页的最后一条数据 id，当作条件查接下来的数据
-            int id = Composition.getMp_id();
+            int id = com.getMp_id();
 
             // 从上一页最后一条开始查（大于不包括这一条）
             query.addCriteria(Criteria.where("mp_id").gt(id));

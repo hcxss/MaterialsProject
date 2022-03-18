@@ -36,13 +36,6 @@ public class DosController {
         return res;
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/get_tab_count", method = RequestMethod.POST)
-    public Result getTabCount(HttpServletResponse response, HttpServletRequest request) throws ParseException {
-        String  tableName= ServletRequestUtils.getStringParameter(request,"tableName","");
 
-        Result res= new Result(dosServiceImpl.getTableCount(tableName));
-        return res;
-    }
 
 }
